@@ -1,17 +1,39 @@
 import { NextFunction, Request, Response } from 'express';
-import { userService } from '../services';
-import {StatusCodesEnum} from '../constants';
+import { authService, jwtService, userService } from '../services';
+import { StatusCodesEnum } from '../constants';
+import { documentUtil } from '../utils';
+import { IExtendedRequest } from '../models';
 
 const { createUser } = userService;
+const { generateToken } = jwtService;
 const { CREATED } = StatusCodesEnum;
+const { normalizeDocument } = documentUtil;
+const { createAuthToken } = authService;
 
 export const userController = {
   register: async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const user = await createUser({ ...req.body });
 
-    await createUser({ ...req.body });
+      const token: string = generateToken();
 
-    res
-      .status(CREATED)
-      .json({ token: 'adsfsg' });
+      await createAuthToken(token, user._id);
+
+      const normalizedUser = normalizeDocument(user.toJSON());
+
+      res
+        .status(CREATED)
+        .json({ user: normalizedUser, token });
+    } catch (e) {
+      next(e);
+    }
+  },
+
+  login: (req: IExtendedRequest, res: Response, next: NextFunction) => {
+    try {
+
+    } catch (e) {
+      next(e);
+    }
   }
 };

@@ -1,3 +1,4 @@
 export enum DbTablesEnum {
-  USER = 'user'
+  USER = 'user',
+  AUTH = 'auth'
 }

@@ -1,7 +1,7 @@
 import { NextFunction, Response } from 'express';
 
 import { User } from '../database';
-import {IExtendedRequest, IUser } from '../models';
+import { IExtendedRequest, IUser } from '../models';
 import { CustomError } from '../errors';
 import { StatusCodesEnum } from '../constants';
 
@@ -32,6 +32,20 @@ export const userMiddleware = {
 
       if (user) {
         throw new CustomError('Email already in use', CONFLICT);
+      }
+
+      next();
+    } catch (e) {
+      next(e);
+    }
+  },
+
+  checkUserExists: (req: IExtendedRequest, res: Response, next: NextFunction) => {
+    try {
+      const { user } = req;
+
+      if (!user) {
+        throw new CustomError('User not found', NOT_FOUND);
       }
 
       next();

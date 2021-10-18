@@ -1,7 +1,8 @@
 import { Document, model, Model, Schema } from 'mongoose';
 
 import { IUser } from '../../models';
-import {DbTablesEnum} from '../../constants';
+import { DbTablesEnum } from '../../constants';
+import { RolesEnum } from '../../constants/enums/roles.enum';
 
 const { USER } = DbTablesEnum;
 
@@ -24,6 +25,12 @@ const UserSchema: Schema = new Schema<IUser>({
   password: {
     type: String,
     required: true
+  },
+  role: {
+    type: String,
+    enum: [...Object.values(RolesEnum)],
+    required: true,
+    default: RolesEnum.USER
   }
 }, { timestamps: true });
 

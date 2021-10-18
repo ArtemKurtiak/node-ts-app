@@ -19,6 +19,7 @@ module.exports = {
     // "array-bracket-newline": ["error", { "minItems": 2 }],
     // "array-element-newline": ["error", { "minItems": 2 }],
     // "arrow-body-style": "error",
+    'object-curly-spacing': ['warn', 'always'],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'block-scoped-var': 'error',
     'comma-dangle': ['error', 'never'],
@@ -30,9 +31,9 @@ module.exports = {
     'eol-last': 'error',
     eqeqeq: 'error',
     'guard-for-in': 'error',
-    indent: ['error', 2, {SwitchCase: 1}],
+    indent: ['error', 2, { SwitchCase: 1 }],
     'max-classes-per-file': 'off',
-    'max-len': ['error', {code: 140}],
+    'max-len': ['error', { code: 140 }],
     // "newline-per-chained-call": "error",
     'new-parens': 'error',
     'newline-before-return': 'error',
@@ -60,7 +61,7 @@ module.exports = {
     // "no-magic-numbers": ["error", {"ignoreArrayIndexes": true}],
     'no-multi-spaces': 'error',
     'no-multi-str': 'error',
-    'no-multiple-empty-lines': ['error', {max: 1, maxEOF: 1}],
+    'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 1 }],
     'no-new': 'error',
     'no-new-func': 'error',
     'no-new-wrappers': 'error',
@@ -93,7 +94,7 @@ module.exports = {
       'error',
       'as-needed'
     ],
-    quotes: ['error', 'single', {allowTemplateLiterals: true}],
+    quotes: ['error', 'single', { allowTemplateLiterals: true }],
     radix: 'error',
     'require-atomic-updates': 'off',
     'require-await': 'error',
@@ -110,9 +111,9 @@ module.exports = {
       'error',
       {
         overrides: {
-          if: {after: true},
-          for: {after: true},
-          while: {after: true}
+          if: { after: true },
+          for: { after: true },
+          while: { after: true }
         }
       }
     ],

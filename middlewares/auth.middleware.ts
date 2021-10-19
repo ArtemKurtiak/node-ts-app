@@ -16,6 +16,8 @@ export const authMiddleware = {
       const auth = await Auth.findOne({ token });
 
       req.auth = auth;
+
+      next();
     } catch (e) {
       next(e);
     }

@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 dotenv.config();
 
 import { config } from './config';
-import { userRouter } from './routers';
+import { productsRouter, userRouter } from './routers';
 import { _errorHandler } from './errors';
 
 const { PORT, MONGODB_URL } = config;
@@ -18,6 +18,8 @@ app.use(express.urlencoded({ extended: false }));
 mongoose.connect(MONGODB_URL);
 
 app.use('/api/auth', userRouter);
+
+app.use('/api/products', productsRouter);
 
 app.use(_errorHandler);
 

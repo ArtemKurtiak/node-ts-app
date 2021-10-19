@@ -1,8 +1,8 @@
 import { Document, LeanDocument } from 'mongoose';
-import { IUser } from '../models';
+import { IProduct, IUser } from '../models';
 
 export const documentUtil = {
-  normalizeDocument: (document: LeanDocument<Document & IUser>): Partial<IUser> => {
+  normalizeDocument: (document: LeanDocument<Document & IUser | IProduct>): Partial<IUser> => {
 
     const fieldsToRemove: string[] = ['password', '__v'];
 
